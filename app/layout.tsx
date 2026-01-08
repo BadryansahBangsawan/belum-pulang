@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartBottomBar } from "@/components/cart-bottom-bar";
 import OfferPopup from "@/components/OfferPopup";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 const baloo = Baloo_2({
   variable: "--font-display",
@@ -35,6 +36,7 @@ export default function RootLayout({
         className={`${baloo.variable} ${inter.variable} bg-cream text-brown antialiased`}
       >
         {children}
+        <Analytics />
         <OfferPopup /> 
         <Script
           src="//code.tidio.co/ych9pywstrdywc6o1la5xbnyzj1j9mrz.js"
