@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ShoppingBag, X, Minus, Plus, MessageCircle } from "lucide-react";
+import { ShoppingBag, X, Minus, Plus, MessageCircle, MapPin } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/lib/cart-store";
@@ -30,6 +30,9 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [mode, setMode] = useState("pickup");
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [locationLoading, setLocationLoading] = useState(false);
+  const [locationError, setLocationError] = useState("");
   const [errors, setErrors] = useState<{ name?: string; phone?: string; email?: string }>({});
 
   const { count, total } = useMemo(() => {
@@ -37,6 +40,48 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
     const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0);
     return { count, total };
   }, [items]);
+
+  const requestLocation = () => {
+    setLocationLoading(true);
+    setLocationError("");
+    
+    if (!navigator.geolocation) {
+      setLocationError("Geolocation is not supported by your browser");
+      setLocationLoading(false);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+        setLocationLoading(false);
+      },
+      (error) => {
+        let errorMessage = "Unable to get location";
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage = "Location permission denied";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMessage = "Location information unavailable";
+            break;
+          case error.TIMEOUT:
+            errorMessage = "Location request timed out";
+            break;
+        }
+        setLocationError(errorMessage);
+        setLocationLoading(false);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      }
+    );
+  };
 
   const handleSend = () => {
     const nextErrors: typeof errors = {};
@@ -51,15 +96,22 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
     }
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0 || items.length === 0) return;
+    
     const lines = items
       .map((item) => `${item.quantity}x ${item.name} – ₹${item.price * item.quantity}`)
       .join("\n");
+    
+    const locationLink = location
+      ? `https://www.google.com/maps?q=${location.lat},${location.lng}`
+      : null;
+    
     const message = [
       "Hello Bakehouse Café!",
       `Order mode: ${mode === "pickup" ? "Pickup" : "Dine-in"}`,
       `Name: ${name}`,
       `Phone: ${phone}`,
       email ? `Email: ${email}` : null,
+      locationLink ? `Location: ${locationLink}` : null,
       "",
       "Items:",
       lines,
@@ -67,10 +119,13 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
     ]
       .filter(Boolean)
       .join("\n");
+    
     const url = `https://wa.me/${OWNER_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
     setWhOpen(false);
     clearCart();
+    setLocation(null);
+    setLocationError("");
   };
 
   // ensure persisted store is hydrated when component mounts (for SSR)
@@ -245,10 +300,50 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
                 ))}
               </div>
             </div>
+            
+            {/* Location section */}
+            <div className="space-y-2">
+              <Label>Share Location</Label>
+              {!location ? (
+                <button
+                  className={cn(
+                    "flex w-full items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-chip",
+                    locationLoading
+                      ? "bg-amber-100 text-brown/50"
+                      : "bg-amber-50 text-brown hover:bg-amber-100"
+                  )}
+                  onClick={requestLocation}
+                  disabled={locationLoading}
+                >
+                  <MapPin className="size-4" />
+                  {locationLoading ? "Getting location..." : "Share my location"}
+                </button>
+              ) : (
+                <div className="flex items-center justify-between rounded-full bg-green-50 px-4 py-2 shadow-chip">
+                  <div className="flex items-center gap-2 text-sm text-green-700">
+                    <MapPin className="size-4" />
+                    <span>Location added</span>
+                  </div>
+                  <button
+                    className="text-green-700/60 hover:text-green-700"
+                    onClick={() => setLocation(null)}
+                  >
+                    <X className="size-4" />
+                  </button>
+                </div>
+              )}
+              {locationError ? (
+                <p className="text-xs font-medium text-red-600">{locationError}</p>
+              ) : null}
+              {!location && !locationLoading && (
+                <p className="text-xs text-brown/60">Location is required to place order</p>
+              )}
+            </div>
+
             <Button
-              className="w-full rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90"
+              className="w-full rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90 disabled:opacity-50"
               onClick={handleSend}
-              disabled={!name || !phone || items.length === 0}
+              disabled={!name || !phone || items.length === 0 || !location}
             >
               Open WhatsApp
             </Button>
