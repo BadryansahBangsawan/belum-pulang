@@ -6,8 +6,6 @@ import { menuItems, categories, type MenuItem } from "@/lib/menu-data";
 import { CategoryPills } from "@/components/category-pills";
 import { Input } from "@/components/ui/input";
 import { ProductCard } from "@/components/product-card";
-import { useCartStore } from "@/lib/cart-store";
-import { CartDrawer } from "@/components/cart-drawer";
 
 export function MenuClient() {
   const params = useSearchParams();
@@ -15,13 +13,6 @@ export function MenuClient() {
   const defaultCategory = params.get("category") || categories[0].id;
   const [selected, setSelected] = useState(defaultCategory);
   const [search, setSearch] = useState("");
-  const items = useCartStore((s) => s.items);
-
-  const { count, total } = useMemo(() => {
-    const count = items.reduce((sum, item) => sum + item.quantity, 0);
-    const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0);
-    return { count, total };
-  }, [items]);
 
   useEffect(() => {
     const query = new URLSearchParams(params.toString());
@@ -75,30 +66,6 @@ export function MenuClient() {
           </div>
         ) : null}
       </div>
-
-      {count > 0 ? (
-        <div className="fixed bottom-4 left-0 right-0 z-40 flex justify-center md:hidden">
-          <CartDrawer
-            triggerClassName="w-[90%] max-w-md justify-between bg-brown text-amber-100 px-5 py-3 text-base hover:-translate-y-0 shadow-soft border-none"
-            triggerContent={
-              <>
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 text-brown shadow-chip">
-                    {count}
-                  </span>
-                  <div className="flex flex-col leading-tight">
-                    <span className="text-sm font-semibold">
-                      {count} item{count === 1 ? "" : "s"}
-                    </span>
-                    <span className="text-xs text-amber-100/80">₹{total}</span>
-                  </div>
-                </div>
-                <span className="font-semibold">View Cart →</span>
-              </>
-            }
-          />
-        </div>
-      ) : null}
     </main>
   );
 }

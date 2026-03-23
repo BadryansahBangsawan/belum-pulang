@@ -26,7 +26,7 @@ export function ProductCard({ item }: Props) {
           ) : null}
         </div>
         {item.badge ? (
-          <Badge className="rounded-full bg-yellow text-brown shadow-chip">
+          <Badge className="rounded-full bg-yellow text-amber-50 shadow-chip">
             {item.badge}
           </Badge>
         ) : null}

@@ -6,13 +6,17 @@ import { useEffect, useMemo } from "react";
 
 export function CartBottomBar() {
   const items = useCartStore((s) => s.items);
+  const rehydrate = useCartStore.persist?.rehydrate;
   const { count, total } = useMemo(() => {
     const count = items.reduce((sum, item) => sum + item.quantity, 0);
     const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0);
     return { count, total };
   }, [items]);
 
-  // 🔑 ADD THIS EFFECT
+  useEffect(() => {
+    rehydrate?.();
+  }, [rehydrate]);
+
   useEffect(() => {
     if (count > 0) {
       document.body.classList.add("cart-visible");

@@ -20,9 +20,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Bakehouse Café",
+  title: "Kunawa Space",
   description:
-    "Warm, playful café experience with fresh bakes, coffee, and colorful vibes.",
+    "Warm and modern cafe experience with coffee, food, and social vibes.",
+  icons: {
+    icon: "/logo/Kunawa_logo.jpg",
+    shortcut: "/logo/Kunawa_logo.jpg",
+    apple: "/logo/Kunawa_logo.jpg",
+  },
 };
 
 export default function RootLayout({

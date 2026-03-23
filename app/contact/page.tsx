@@ -53,7 +53,7 @@ export default function ContactPage() {
       .filter(Boolean)
       .join("\n");
     const url = `https://wa.me/${OWNER_NUMBER}?text=${encodeURIComponent(lines)}`;
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -72,13 +72,14 @@ export default function ContactPage() {
               <div className="space-y-2">
                 <Label>Address</Label>
                 <p className="rounded-2xl bg-amber-50 p-3 text-brown">
-                  Bakehouse Café, 21st Street, Jubilee Hills, Hyderabad
+                  Kunawa Space, RCJQ+JC4, Jl. Mapala Raya, Tidung, Kec.
+                  Rappocini, Kota Makassar, Sulawesi Selatan
                 </p>
               </div>
               <div className="space-y-2">
                 <Label>Call us</Label>
                 <p className="rounded-2xl bg-amber-50 p-3 text-brown">
-                  +91 88888 88888
+                  Belum dicantumkan di Google Maps
                 </p>
               </div>
               <div className="space-y-2">
@@ -90,7 +91,7 @@ export default function ContactPage() {
               <div className="space-y-2">
                 <Label>Opening hours</Label>
                 <p className="rounded-2xl bg-amber-50 p-3 text-brown">
-                  Daily: 8:00 AM – 11:00 PM
+                  Cek Google Maps untuk jam terbaru
                 </p>
               </div>
             </div>

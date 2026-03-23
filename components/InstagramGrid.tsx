@@ -58,11 +58,12 @@ export default function InstagramGrid() {
                     href={post.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Open Instagram photo: ${post.alt}`}
                     className="group relative aspect-square overflow-hidden"
                   >
                     <Image
                       src={post.image}
-                      alt=""
+                      alt={post.alt}
                       width={600}
                       height={600}
                       className="aspect-square object-cover group-hover:scale-110 transition-transform duration-300"
@@ -124,11 +125,12 @@ export default function InstagramGrid() {
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Open Instagram photo: ${post.alt}`}
                       className="group relative aspect-square overflow-hidden bg-gray-100 rounded-lg hover:opacity-90 transition-opacity"
                     >
                       <Image
                         src={post.image}
-                        alt=""
+                        alt={post.alt}
                         width={600}
                         height={600}
                         className="aspect-square object-cover group-hover:scale-105 transition-transform duration-300"

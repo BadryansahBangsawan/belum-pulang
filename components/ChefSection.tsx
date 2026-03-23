@@ -13,13 +13,6 @@ export default function ChefSection() {
       <div className="container mx-auto">
         {/* Header (same scale as Our Story heading) */}
         <div className="text-center mb-11 lg:mb-14">
-          <div className="inline-flex items-center gap-2 bg-yellow-100 px-4 py-2 rounded-full mb-4">
-            <ChefHat className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-600" />
-            <span className="text-xs lg:text-sm font-semibold text-yellow-700 uppercase tracking-wide">
-              The Master Behind the Magic
-            </span>
-          </div>
-
           <h2 className="display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900">
             Meet Our <span className="text-yellow-500">Chef</span>
           </h2>

@@ -57,7 +57,7 @@ export default function ReservePage() {
       .filter(Boolean)
       .join("\n");
     const url = `https://wa.me/${OWNER_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (

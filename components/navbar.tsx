@@ -14,9 +14,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Image from "next/image";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
   { href: "/reserve", label: "Reserve Table" },
   { href: "/about", label: "About Us" },
@@ -60,11 +60,11 @@ export function Navbar() {
                 <SheetTitle>Navigation</SheetTitle>
               </SheetHeader>
               <div className="mb-4">
-                <p className="display text-lg font-bold text-brown">
-                  Bakehouse Café
+                <p className="display text-lg font-bold text-[#5B0F0F]">
+                  Kunawa Space
                 </p>
                 <p className="text-xs text-brown/70">
-                  Fresh bakes, coffee & bites
+                  Coffee, food, and good vibes
                 </p>
               </div>
               <nav className="flex flex-col gap-2">
@@ -85,24 +85,10 @@ export function Navbar() {
           </Sheet>
         </div>
 
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/logo/bakehouse-logo.png"
-            alt="Bakehouse Cafe"
-            width={170}
-            height={170}
-            priority
-            className="
-      h-10 w-auto
-      md:h-12 lg:h-20
-      drop-shadow-sm
-    "
-          />
-          <div className="leading-tight">
-            <p className="display text-base sm:text-xl lg:text-2xl font-extrabold uppercase text-brown tracking-tight">
-              Bakehouse Café
-            </p>
-          </div>
+        <Link href="/" className="leading-tight">
+          <p className="display text-base sm:text-xl lg:text-2xl font-extrabold uppercase text-[#5B0F0F] tracking-tight">
+            Kunawa Space
+          </p>
         </Link>
 
         <nav className="hidden items-center gap-2 text-base font-bold uppercase text-brown md:flex">
@@ -128,7 +114,7 @@ export function Navbar() {
           </div>
           <Button
             size="sm"
-            className="relative overflow-hidden rounded-full border lg:border-2 bg-yellow px-4 py-2 text-brown shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg sm:px-5 sm:py-3 cursor-pointer"
+            className="relative overflow-hidden rounded-full border lg:border-2 bg-yellow px-4 py-2 text-amber-50 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg sm:px-5 sm:py-3 cursor-pointer"
             onClick={() => router.push("/menu")}
           >
             <span className="display text-sm sm:text-base font-extrabold uppercase tracking-wide">

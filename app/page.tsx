@@ -35,7 +35,6 @@ export default function Home() {
       <main className="pb-0">
         <HeroCarousel />
         <ProductsDaily />
-        {/* Moving banner for companies */}
         <LogoBanner />
         {/* <ReservePromo /> */}
         <MyStory />

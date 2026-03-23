@@ -23,104 +23,104 @@ export default function HeroCarousel() {
   const sketchRef = useRef<HTMLImageElement>(null);
 
   useGSAP(
-  () => {
-    // Timeline for initial load animations
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    () => {
+      // Timeline for initial load animations
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    // 1. Heading animation - Split lines fade in from bottom
-    tl.from(
-      headingRef.current?.children || [],
-      {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        clearProps: "all", // ← Clear inline styles after animation
-      },
-      0.3
-    );
+      // 1. Heading animation - Split lines fade in from bottom
+      tl.from(
+        headingRef.current?.children || [],
+        {
+          y: 100,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.2,
+          clearProps: "all", // ← Clear inline styles after animation
+        },
+        0.3,
+      );
 
-    // 2. Description fade in
-    tl.from(
-      descRef.current,
-      {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        clearProps: "all", // ← Clear inline styles
-      },
-      0.8
-    );
+      // 2. Description fade in
+      tl.from(
+        descRef.current,
+        {
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          clearProps: "all", // ← Clear inline styles
+        },
+        0.8,
+      );
 
-    // 3. Buttons slide in - FIX HERE
-    tl.fromTo(
-      buttonsRef.current?.children || [],
-      {
-        x: -50,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1, // ← Explicitly set final opacity
-        duration: 0.6,
-        stagger: 0.15,
-        clearProps: "all", // ← Clear inline styles after animation
-      },
-      1
-    );
+      // 3. Buttons slide in - FIX HERE
+      tl.fromTo(
+        buttonsRef.current?.children || [],
+        {
+          x: -50,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1, // ← Explicitly set final opacity
+          duration: 0.6,
+          stagger: 0.15,
+          clearProps: "all", // ← Clear inline styles after animation
+        },
+        1,
+      );
 
-    // 4. Burger image - Scale up with rotation
-    tl.from(
-      burgerRef.current,
-      {
-        scale: 0.8,
-        opacity: 0,
-        rotation: -10,
-        duration: 1.2,
-        ease: "back.out(1.7)",
-        clearProps: "all", // ← Clear inline styles
-      },
-      0.5
-    );
+      // 4. Burger image - Scale up with rotation
+      tl.from(
+        burgerRef.current,
+        {
+          scale: 0.8,
+          opacity: 0,
+          rotation: -10,
+          duration: 1.2,
+          ease: "back.out(1.7)",
+          clearProps: "all", // ← Clear inline styles
+        },
+        0.5,
+      );
 
-    // 5. Coffee cup - Slide in from left with rotation
-    tl.from(
-      coffeeRef.current,
-      {
-        x: -200,
-        opacity: 0,
-        rotation: -30,
-        duration: 1,
-        ease: "power2.out",
-        clearProps: "all", // ← Clear inline styles
-      },
-      0.6
-    );
+      // 5. Coffee cup - Slide in from left with rotation
+      tl.from(
+        coffeeRef.current,
+        {
+          x: -200,
+          opacity: 0,
+          rotation: -30,
+          duration: 1,
+          ease: "power2.out",
+          clearProps: "all", // ← Clear inline styles
+        },
+        0.6,
+      );
 
-    // ScrollTrigger animations for parallax effects
-    gsap.to(burgerRef.current, {
-      y: -50,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
+      // ScrollTrigger animations for parallax effects
+      gsap.to(burgerRef.current, {
+        y: -50,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
 
-    gsap.to(coffeeRef.current, {
-      y: 30,
-      rotation: -15,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 2,
-      },
-    });
-  },
-  { scope: sectionRef }
-);
+      gsap.to(coffeeRef.current, {
+        y: 30,
+        rotation: -15,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 2,
+        },
+      });
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
@@ -236,8 +236,8 @@ export default function HeroCarousel() {
           ref={descRef}
           className="display text-gray-500 text-base sm:text-lg lg:text-2xl max-w-xs sm:max-w-md lg:max-w-2xl"
         >
-          Burger is the missing piece that makes every day complete, a simple yet
-          delicious joy in life
+          Burger is the missing piece that makes every day complete, a simple
+          yet delicious joy in life
         </p>
 
         <div
@@ -258,10 +258,13 @@ export default function HeroCarousel() {
             "
             onClick={() => router.push("/menu?category=burger")}
           >
-            <span className="display text-lg sm:text-xl font-extrabold uppercase tracking-wide">
+            <span className="display text-lg sm:text-xl font-extrabold uppercase tracking-wide text-white">
               Order Now
             </span>
-            <ChevronRight strokeWidth={3} className="ml-1 h-5 w-5 sm:h-6 sm:w-6" />
+            <ChevronRight
+              strokeWidth={3}
+              className="ml-1 h-5 w-5 sm:h-6 sm:w-6"
+            />
             <span className="pointer-events-none absolute inset-0 rounded-full border border-brown/70 opacity-80" />
           </Button>
 

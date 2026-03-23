@@ -48,7 +48,7 @@ export function CartSummary({ className }: { className?: string }) {
       .join("\n");
 
     const url = `https://wa.me/${OWNER_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
     setOpen(false);
   };
 
@@ -65,7 +65,7 @@ export function CartSummary({ className }: { className?: string }) {
           <div className="flex items-center gap-2">
             <Button
               variant="secondary"
-              className="rounded-full bg-yellow text-brown hover:bg-yellow/90"
+              className="rounded-full bg-yellow text-amber-50 hover:bg-yellow/90"
               onClick={() => setOpen(true)}
               disabled={items.length === 0}
             >

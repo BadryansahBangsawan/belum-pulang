@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionWrapper } from "./section-wrapper";
 import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
 import { cn } from "@/lib/utils";
 
 // export function ReservePromo() {
@@ -131,7 +130,7 @@ export function CravingPills() {
             <Link
               key={pill.label}
               href={pill.href}
-              className="rounded-full bg-amber-100 px-4 py-2 text-sm font-semibold text-brown shadow-chip hover:bg-yellow"
+              className="rounded-full bg-amber-100 px-4 py-2 text-sm font-semibold text-brown shadow-chip hover:bg-yellow hover:text-amber-50"
             >
               {pill.label}
             </Link>
@@ -153,7 +152,7 @@ export function StaffSection() {
             fill
             className="object-cover"
           />
-          <div className="absolute left-4 top-4 rounded-full bg-yellow px-3 py-1 text-xs font-bold text-brown shadow-chip">
+          <div className="absolute left-4 top-4 rounded-full bg-yellow px-3 py-1 text-xs font-bold text-amber-50 shadow-chip">
             COMBO
           </div>
         </div>
@@ -169,7 +168,7 @@ export function StaffSection() {
             “Baking is a craft in itself, and we love these delicate flavors.” —
             Ashton Cooper, Head Baker
           </p>
-          <Button className="w-fit rounded-full bg-yellow text-brown shadow-chip hover:bg-yellow/90">
+          <Button className="w-fit rounded-full bg-yellow text-amber-50 shadow-chip hover:bg-yellow/90">
             Meet the team
           </Button>
         </div>
@@ -266,27 +265,46 @@ export function VisitSection() {
         <div className="space-y-3">
           <p className="display text-2xl font-extrabold text-brown">Visit us</p>
           <p className="text-brown/80">
-            Bakehouse Café, 21st Street, Jubilee Hills, Hyderabad
+            Kunawa Space, RCJQ+JC4, Jl. Mapala Raya, Tidung, Kec. Rappocini, Kota
+            Makassar, Sulawesi Selatan
           </p>
-          <p className="text-brown/70">Open daily: 8:00 AM – 11:00 PM</p>
-          <p className="text-brown/70">Phone: +91 88888 88888</p>
+          <p className="text-brown/70">Rating Google: 4.7</p>
+          <p className="text-brown/70">
+            Jam operasional: cek langsung di Google Maps
+          </p>
+          <p className="text-brown/70">
+            No. telepon: belum dicantumkan di Google Maps
+          </p>
           <div className="flex gap-2">
-            {socialLinks.map((social) => (
-              <span
-                key={social.name}
-                aria-label={social.name}
-                className="flex items-center justify-center rounded-full bg-amber-100 p-2 text-brown shadow-chip"
-              >
-                <SocialIcon name={social.icon} />
-              </span>
-            ))}
+            {socialLinks.map((social) =>
+              social.href ? (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="flex items-center justify-center rounded-full bg-amber-100 p-2 text-brown shadow-chip"
+                >
+                  <SocialIcon name={social.icon} />
+                </a>
+              ) : (
+                <span
+                  key={social.name}
+                  aria-label={social.name}
+                  className="flex items-center justify-center rounded-full bg-amber-100 p-2 text-brown shadow-chip"
+                >
+                  <SocialIcon name={social.icon} />
+                </span>
+              )
+            )}
           </div>
         </div>
-        <div className="h-52 rounded-2xl bg-amber-100/70 p-3 shadow-inner">
+        <div className="h-52 overflow-hidden rounded-2xl">
           <iframe
-            title="BakeHouse Café location"
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3499.6013313506764!2d77.30448207572228!3d28.7015699756272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDQyJzA1LjciTiA3N8KwMTgnMjUuNCJF!5e0!3m2!1sen!2sin!4v1765171027755!5m2!1sen!2sin"
-            className="h-full w-full rounded-xl border-0"
+            title="Kunawa Space location"
+            src="https://www.google.com/maps?q=-5.1684875,119.4385803&z=17&output=embed"
+            className="h-full w-full border-0"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -297,7 +315,7 @@ export function VisitSection() {
   );
 }
 
-function SocialIcon({ name }: { name: "instagram" | "facebook" | "youtube" }) {
+function SocialIcon({ name }: { name: "instagram" | "tiktok" | "youtube" }) {
   if (name === "instagram") {
     return (
       <svg
@@ -311,7 +329,7 @@ function SocialIcon({ name }: { name: "instagram" | "facebook" | "youtube" }) {
       </svg>
     );
   }
-  if (name === "facebook") {
+  if (name === "tiktok") {
     return (
       <svg
         aria-hidden="true"
@@ -320,7 +338,7 @@ function SocialIcon({ name }: { name: "instagram" | "facebook" | "youtube" }) {
         className="h-5 w-5"
         fill="currentColor"
       >
-        <path d="M13 10.5V8.75c0-.833.334-1.25 1.25-1.25H15.5V5h-2.5C10.75 5 9.5 6.25 9.5 8.25v2.25H7v2.5h2.5V19h3V13h2.086L15 10.5h-2Z" />
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.44v13.53a2.9 2.9 0 1 1-2.9-2.9 2.9 2.9 0 0 1 .88.13V9.3a6.34 6.34 0 1 0 5.46 6.23V8.64a8.25 8.25 0 0 0 4.8 1.53V6.69Z" />
       </svg>
     );
   }
@@ -337,8 +355,20 @@ function SocialIcon({ name }: { name: "instagram" | "facebook" | "youtube" }) {
   );
 }
 
-const socialLinks: { name: string; icon: "instagram" | "facebook" | "youtube" }[] = [
-  { name: "Instagram", icon: "instagram" },
-  { name: "Facebook", icon: "facebook" },
+const socialLinks: {
+  name: string;
+  icon: "instagram" | "tiktok" | "youtube";
+  href?: string;
+}[] = [
+  {
+    name: "Instagram",
+    icon: "instagram",
+    href: "https://www.instagram.com/kunawa____/",
+  },
+  {
+    name: "TikTok",
+    icon: "tiktok",
+    href: "https://www.tiktok.com/@kunawaspace_",
+  },
   { name: "YouTube", icon: "youtube" },
 ];

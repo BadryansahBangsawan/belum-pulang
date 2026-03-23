@@ -250,7 +250,7 @@ export default function ProductsDaily() {
 
             <CardFooter className="px-5 pb-3 pt-3">
               <Button
-                className="w-full display text-lg rounded-full border-2 border-brown/70 bg-yellow text-brown font-bold hover:shadow-lg"
+                className="w-full display text-lg rounded-full border-2 border-brown/70 bg-yellow text-amber-50 font-bold hover:shadow-lg"
                 onClick={() => handleAddToCart(p)}
               >
                 Add to Cart

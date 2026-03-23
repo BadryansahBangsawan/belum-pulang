@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ShoppingBag, X, Minus, Plus, MessageCircle, MapPin } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,6 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
   const increaseQty = useCartStore((s) => s.increaseQty);
   const decreaseQty = useCartStore((s) => s.decreaseQty);
   const removeItem = useCartStore((s) => s.removeItem);
-  const hydrate = useCartStore.persist?.rehydrate;
   const [open, setOpen] = useState(false);
   const [whOpen, setWhOpen] = useState(false);
   const [name, setName] = useState("");
@@ -121,17 +120,12 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
       .join("\n");
     
     const url = `https://wa.me/${OWNER_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
     setWhOpen(false);
     clearCart();
     setLocation(null);
     setLocationError("");
   };
-
-  // ensure persisted store is hydrated when component mounts (for SSR)
-  useEffect(() => {
-    hydrate?.();
-  }, [hydrate]);
 
   return (
     <>
@@ -218,7 +212,7 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
 
               <div className="space-y-3">
                 <button
-                  className="w-full rounded-full bg-yellow px-4 py-3 text-center font-semibold text-brown shadow-chip hover:bg-yellow/90"
+                  className="w-full rounded-full bg-yellow px-4 py-3 text-center font-semibold text-amber-50 shadow-chip hover:bg-yellow/90"
                   onClick={() => setWhOpen(true)}
                 >
                   <span className="inline-flex items-center gap-2">

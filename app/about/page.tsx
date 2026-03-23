@@ -16,7 +16,7 @@ export default function AboutPage() {
         <SectionWrapper>
           <div className="grid gap-6 rounded-[28px] bg-white p-6 shadow-soft md:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-4">
-              <Badge className="rounded-full bg-yellow text-brown shadow-chip">
+              <Badge className="rounded-full bg-yellow text-amber-50 shadow-chip">
                 Our story
               </Badge>
               <h1 className="display text-4xl font-extrabold text-brown">
@@ -32,11 +32,12 @@ export default function AboutPage() {
                 teal. Bring friends, co-work with a latte, or grab a pretzel on
                 the go.
               </p>
-              <Link href="/menu">
-                <Button className="rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90">
-                  View menu
-                </Button>
-              </Link>
+              <Button
+                asChild
+                className="rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90"
+              >
+                <Link href="/menu">View menu</Link>
+              </Button>
             </div>
             <div className="relative h-80 overflow-hidden rounded-[24px] bg-amber-100">
               <Image
