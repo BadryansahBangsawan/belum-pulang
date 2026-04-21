@@ -1,5 +1,6 @@
 // InstagramHeader.tsx
 import { instagramProfile } from "@/lib/instagram";
+import Image from "next/image";
 import InstagramAvatar from "./InstagramAvatar";
 
 export default function InstagramHeader() {
@@ -20,11 +21,14 @@ export default function InstagramHeader() {
     
   "
 >
-  <img
+  <Image
     src="/decor/follow-moments.png"
     alt="Follow our daily moments"
+    width={320}
+    height={320}
     className="
       w-[200px] lg:w-[320px]
+      h-auto
       -rotate-20
       drop-shadow-md
     "

@@ -5,6 +5,8 @@
 
 :root {
   --radius: 1.75rem;
+  --font-body: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Trebuchet MS", "Arial Rounded MT Bold", "Segoe UI", sans-serif;
   --color-cream: #fff5e6;
   --color-brown: #3b2416;
   --color-yellow: #5b0f0f;

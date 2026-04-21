@@ -19,8 +19,7 @@ export default function HeroCarousel() {
   const descRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const burgerRef = useRef<HTMLDivElement>(null);
-  const coffeeRef = useRef<HTMLImageElement>(null);
-  const sketchRef = useRef<HTMLImageElement>(null);
+  const coffeeRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -138,10 +137,12 @@ export default function HeroCarousel() {
       "
     >
       {/* ================= Decorative Cafe Sketch (Right) ================= */}
-      <img
-        ref={sketchRef}
+      <Image
         src="/decor/cafe-sketch.png"
         alt=""
+        aria-hidden
+        width={800}
+        height={800}
         className="
           pointer-events-none
           select-none
@@ -167,10 +168,8 @@ export default function HeroCarousel() {
       />
 
       {/* ================= Coffee Cup (Left Side) ================= */}
-      <img
+      <div
         ref={coffeeRef}
-        src="/decor/coffee-cup.png"
-        alt=""
         className="
           pointer-events-none
           select-none
@@ -204,7 +203,16 @@ export default function HeroCarousel() {
           lg:hover:scale-105
           lg:hover:rotate-[-5deg]
         "
-      />
+      >
+        <Image
+          src="/decor/coffee-cup.png"
+          alt=""
+          aria-hidden
+          width={280}
+          height={280}
+          className="h-auto w-full"
+        />
+      </div>
 
       {/* ================= TEXT CONTENT ================= */}
       <div
