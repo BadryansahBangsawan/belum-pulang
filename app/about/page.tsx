@@ -10,33 +10,33 @@ import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-cream flex flex-col">
       <Navbar />
-      <main className="mx-auto max-w-6xl px-4 pb-14 pt-6 sm:px-6">
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 pb-14 pt-6 sm:px-6">
         <SectionWrapper>
           <div className="grid gap-6 rounded-[28px] bg-white p-6 shadow-soft md:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-4">
               <Badge className="rounded-full bg-yellow text-amber-50 shadow-chip">
                 Our story
               </Badge>
-              <h1 className="display text-4xl font-extrabold text-brown">
+              <h1 className="display text-4xl font-extrabold text-[#0038FF]">
                 Warm bakes, bold coffee, playful colors.
               </h1>
-              <p className="text-brown/70">
+              <p className="text-[#0038FF]/80">
                 Bakehouse Café is our love letter to neighborhood bakeries and
                 vibrant street cafés. We hand-fold croissants, roast our beans
                 in-house, and use cultured butter in every batch.
               </p>
-              <p className="text-brown/70">
+              <p className="text-[#0038FF]/80">
                 The vibe? Creamy walls, chocolate accents, and sprinkles of
                 teal. Bring friends, co-work with a latte, or grab a pretzel on
                 the go.
               </p>
               <Button
                 asChild
-                className="rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90"
+                className="rounded-full bg-[#0038FF] text-white shadow-chip hover:bg-[#0038FF]/90"
               >
-                <Link href="/menu">View menu</Link>
+                <Link href="/segera-hadir">Segera Hadir</Link>
               </Button>
             </div>
             <div className="relative h-80 overflow-hidden rounded-[24px] bg-amber-100">
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </SectionWrapper>
 
         <SectionWrapper className="mt-8">
-          <div className="rounded-[28px] bg-brown p-6 text-amber-50 shadow-soft sm:p-10">
+          <div className="rounded-[28px] bg-[#0038FF] p-6 text-white shadow-soft sm:p-10">
             <h2 className="display text-3xl font-extrabold">
               Why choose Bakehouse Café?
             </h2>
@@ -63,12 +63,12 @@ export default function AboutPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl bg-white/10 p-4 text-amber-50 shadow-soft"
+                  className="rounded-2xl bg-white/10 p-4 text-white shadow-soft"
                 >
-                  <p className="display text-xl font-extrabold text-yellow">
+                  <p className="display text-xl font-extrabold text-[#9eb8ff]">
                     {item}
                   </p>
-                  <p className="text-sm text-amber-100/80">
+                  <p className="text-sm text-white/85">
                     Crafted to keep the experience warm and lively.
                   </p>
                 </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
           </div>
         </SectionWrapper>
       </main>
-      <Footer />
+      <Footer className="mt-0" />
     </div>
   );
 }

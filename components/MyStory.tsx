@@ -99,15 +99,12 @@ export default function MyStory() {
             shadow-xl  /* Add depth */
           "
         >
-          <video
-            src="/vidio.mp4"
-            className="h-full w-full object-cover object-center sm:object-[50%_40%]"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            aria-label="Suasana Kunawa Space"
+          <Image
+            src="/images/cafe.jpg"
+            alt="Our Story cafe ambience"
+            fill
+            className="object-cover object-center sm:object-[50%_40%]"
+            priority={false}
           />
         </div>
 
@@ -133,7 +130,7 @@ export default function MyStory() {
               asChild
               className="rounded-full lg:text-xl text-lg bg-yellow px-6 py-3 text-amber-50 font-bold hover:shadow-lg cursor-pointer border-2 border-brown/70"
             >
-              <Link href="/reserve">Reserve Table</Link>
+              <Link href="/segera-hadir">Segera Hadir</Link>
             </Button>
 
             <Link

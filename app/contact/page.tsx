@@ -41,7 +41,7 @@ export default function ContactPage() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
     const lines = [
-      "Hello Bakehouse Café!",
+      "Hello Belum Pulang!",
       form.subject ? `Subject: ${form.subject}` : null,
       `Name: ${form.name}`,
       `Phone: ${form.phone}`,
@@ -72,7 +72,7 @@ export default function ContactPage() {
               <div className="space-y-2">
                 <Label>Address</Label>
                 <p className="rounded-2xl bg-amber-50 p-3 text-brown">
-                  Kunawa Space, RCJQ+JC4, Jl. Mapala Raya, Tidung, Kec.
+                  Belum Pulang, RCJQ+JC4, Jl. Mapala Raya, Tidung, Kec.
                   Rappocini, Kota Makassar, Sulawesi Selatan
                 </p>
               </div>
@@ -171,7 +171,7 @@ export default function ContactPage() {
             <div className="sm:col-span-2">
               <Button
                 type="submit"
-                className="w-full rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90"
+                className="w-full rounded-full bg-[#0038FF] text-white shadow-chip hover:bg-[#0038FF]/90"
                 disabled={!form.name || !form.phone || !form.message}
               >
                 Send on WhatsApp

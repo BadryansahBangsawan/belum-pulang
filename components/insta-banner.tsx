@@ -15,7 +15,7 @@ const InstagramIcon = () => (
         <stop offset="100%" style={{ stopColor: '#FD1D1D', stopOpacity: 1 }} />
       </linearGradient>
       <radialGradient id="instagram-radial" cx="30%" cy="100%" r="130%">
-        <stop offset="0%" style={{ stopColor: '#5B0F0F', stopOpacity: 1 }} />
+        <stop offset="0%" style={{ stopColor: '#0038FF', stopOpacity: 1 }} />
         <stop offset="25%" style={{ stopColor: '#FF543E', stopOpacity: 1 }} />
         <stop offset="50%" style={{ stopColor: '#C837AB', stopOpacity: 1 }} />
         <stop offset="100%" style={{ stopColor: '#5B51D8', stopOpacity: 1 }} />
@@ -60,7 +60,7 @@ export function InstaBanner() {
     "Follow Us On Instagram",
     "Join Our Community",
     "Share Your Moments",
-    "Tag Us @BakehouseCafe",
+    "Tag Us @belumpulang.co",
   ];
 
   // Repeat pattern enough times

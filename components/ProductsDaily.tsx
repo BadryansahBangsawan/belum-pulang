@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter } from "./ui/card";
-import { useCartStore } from "@/lib/cart-store";
 
 /* ----------------------------------
    CATEGORY DATA (color included)
@@ -12,37 +11,37 @@ import { useCartStore } from "@/lib/cart-store";
 const categories = [
   {
     label: "Pizza",
-    href: "/menu?category=hand-tossed",
+    href: "/segera-hadir",
     bg: "bg-yellow-200",
     text: "text-brown",
   },
   {
     label: "Burger",
-    href: "/menu?category=burger",
+    href: "/segera-hadir",
     bg: "bg-orange-200",
     text: "text-brown",
   },
   {
     label: "Pasta",
-    href: "/menu?category=pasta",
+    href: "/segera-hadir",
     bg: "bg-amber-100",
     text: "text-brown",
   },
   {
     label: "Coffee",
-    href: "/menu?category=cold-coffee",
+    href: "/segera-hadir",
     bg: "bg-stone-200",
     text: "text-brown",
   },
   {
     label: "Dessert",
-    href: "/menu?category=cakes",
+    href: "/segera-hadir",
     bg: "bg-pink-200",
     text: "text-brown",
   },
   {
     label: "Snacks",
-    href: "/menu?category=snacks",
+    href: "/segera-hadir",
     bg: "bg-violet-200",
     text: "text-brown",
   },
@@ -79,18 +78,6 @@ const products = [
 ];
 
 export default function ProductsDaily() {
-  const addItem = useCartStore((state) => state.addItem);
-
-  const handleAddToCart = (product: (typeof products)[number]) => {
-    const numericPrice = Number(product.price.replace(/[^0-9.]/g, "")) || 0;
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: numericPrice,
-      category: "daily-special",
-    });
-  };
-
   return (
     <section className=" relative px-4 sm:px-6 lg:px-12 py-16 lg:py-14">
       {/* ================= Coffee Beans Decoration (Left) ================= */}
@@ -251,9 +238,9 @@ export default function ProductsDaily() {
             <CardFooter className="px-5 pb-3 pt-3">
               <Button
                 className="w-full display text-lg rounded-full border-2 border-brown/70 bg-yellow text-amber-50 font-bold hover:shadow-lg"
-                onClick={() => handleAddToCart(p)}
+                asChild
               >
-                Add to Cart
+                <Link href="/segera-hadir">Segera Hadir</Link>
               </Button>
             </CardFooter>
           </Card>

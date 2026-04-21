@@ -106,19 +106,19 @@ interface Logo {
 
 export default function LogoBanner() {
   const logos: Logo[] = Array.from({ length: 6 }, (_, index) => ({
-    src: "/bottle.png",
-    alt: `Kunawa logo ${index + 1}`,
+    src: "/decor/image-1.png",
+    alt: `Belum Pulang coffee icon ${index + 1}`,
   }));
 
   // Repeat logos enough times for smooth flow
   const repeatedLogos = Array.from({ length: 3 }, () => logos).flat();
 
   return (
-    <section className="relative w-full my-8 lg:my-16">
+    <section className="relative -mt-px mb-8 w-full lg:mb-16">
       {/* Diagonal background with gradient */}
       <div className="relative bg-linear-to-r from-yellow-400 via-yellow-300 to-yellow-400 py-12 lg:py-16 overflow-hidden">
         {/* Decorative top wave */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+        <div className="absolute -top-px left-0 w-full overflow-hidden leading-none">
           <svg
             className="relative block w-full h-8 lg:h-12"
             viewBox="0 0 1200 120"
@@ -126,7 +126,7 @@ export default function LogoBanner() {
           >
             <path
               d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-              fill="#FAF6F0"
+              fill="#0038FF"
             ></path>
           </svg>
         </div>
@@ -177,7 +177,7 @@ export default function LogoBanner() {
         </div>
 
         {/* Decorative bottom wave */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180 z-30">
+        <div className="absolute -bottom-px left-0 w-full overflow-hidden leading-none rotate-180 z-30">
           <svg
             className="relative block w-full h-8 lg:h-12"
             viewBox="0 0 1200 120"
@@ -185,7 +185,7 @@ export default function LogoBanner() {
           >
             <path
               d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-              fill="#FAF6F0"
+              fill="var(--color-cream)"
             ></path>
           </svg>
         </div>

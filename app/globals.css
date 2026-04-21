@@ -9,36 +9,36 @@
   --font-display: "Trebuchet MS", "Arial Rounded MT Bold", "Segoe UI", sans-serif;
   --color-cream: #fff5e6;
   --color-brown: #3b2416;
-  --color-yellow: #5b0f0f;
+  --color-yellow: #0038FF;
   --color-orange: #ff8a4a;
   --color-teal: #46c4b8;
   --color-berry: #f48fb1;
   --color-sky: #d7efff;
 
-  /* Remap yellow/amber family to Kunawa maroon */
-  --color-yellow-50: #f8f1f1;
-  --color-yellow-100: #f1e2e2;
-  --color-yellow-200: #e3c5c5;
-  --color-yellow-300: #d3a2a2;
-  --color-yellow-400: #a34747;
-  --color-yellow-500: #5b0f0f;
-  --color-yellow-600: #4e0d0d;
-  --color-yellow-700: #410a0a;
-  --color-yellow-800: #340808;
-  --color-yellow-900: #290606;
-  --color-yellow-950: #170303;
+  /* Remap yellow/amber family to Belum Pulang blue */
+  --color-yellow-50: #eef1fa;
+  --color-yellow-100: #dfe6f6;
+  --color-yellow-200: #c4d0ee;
+  --color-yellow-300: #9eb1e3;
+  --color-yellow-400: #728bd4;
+  --color-yellow-500: #0038FF;
+  --color-yellow-600: #243f77;
+  --color-yellow-700: #1f3562;
+  --color-yellow-800: #1a2b4d;
+  --color-yellow-900: #162340;
+  --color-yellow-950: #0d1426;
 
-  --color-amber-50: #f8f1f1;
-  --color-amber-100: #f1e2e2;
-  --color-amber-200: #e3c5c5;
-  --color-amber-300: #d3a2a2;
-  --color-amber-400: #a34747;
-  --color-amber-500: #5b0f0f;
-  --color-amber-600: #4e0d0d;
-  --color-amber-700: #410a0a;
-  --color-amber-800: #340808;
-  --color-amber-900: #290606;
-  --color-amber-950: #170303;
+  --color-amber-50: #eef1fa;
+  --color-amber-100: #dfe6f6;
+  --color-amber-200: #c4d0ee;
+  --color-amber-300: #9eb1e3;
+  --color-amber-400: #728bd4;
+  --color-amber-500: #0038FF;
+  --color-amber-600: #243f77;
+  --color-amber-700: #1f3562;
+  --color-amber-800: #1a2b4d;
+  --color-amber-900: #162340;
+  --color-amber-950: #0d1426;
 }
 
 @theme inline {
@@ -212,12 +212,10 @@ body {
 /* Float animation for particles */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.7;
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 1;
+    transform: translateY(-20px);
   }
 }
 
@@ -411,23 +409,12 @@ html {
   }
 }
 
-/* ------------------------------
-   TIDIO CHAT REAL FIX
--------------------------------- */
-
-/* Target the actual Tidio widget */
+/* Force-hide third-party chat bubbles/widgets */
 #tidio-chat,
 #tidio-chat-iframe,
 iframe[src*="tidio.co"] {
-  bottom: 16px !important;
-  right: 6px !important;
-  z-index: 30 !important;
-  transition: bottom 0.25s ease;
-}
-
-/* Jab cart visible ho */
-body.cart-visible #tidio-chat,
-body.cart-visible #tidio-chat-iframe,
-body.cart-visible iframe[src*="tidio.co"] {
-  bottom: 75px !important; /* Cart ke upar */
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { CartDrawer } from "@/components/cart-drawer";
 import { Menu } from "lucide-react";
 import {
   Sheet,
@@ -17,15 +15,13 @@ import {
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/menu", label: "Menu" },
-  { href: "/reserve", label: "Reserve Table" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
-  const router = useRouter();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -38,10 +34,10 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full transition-all",
-        scrolled
-          ? "fixed bg-cream/80 backdrop-blur shadow-soft"
-          : "bg-cream"
+        "top-0 z-40 w-full transition-all",
+        isHome ? "fixed bg-transparent" : "sticky",
+        !isHome &&
+          (scrolled ? "bg-cream/80 backdrop-blur shadow-soft" : "bg-cream")
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2.5 sm:px-5 md:px-6 md:py-3 lg:py-1">
@@ -50,7 +46,12 @@ export function Navbar() {
             <SheetTrigger asChild>
               <button
                 aria-label="Open menu"
-                className="rounded-full bg-white p-2.5 text-brown shadow-chip"
+                className={cn(
+                  "rounded-full p-2.5 shadow-chip",
+                  isHome
+                    ? "bg-white/10 text-white ring-1 ring-white/40 backdrop-blur"
+                    : "bg-white text-brown"
+                )}
               >
                 <Menu className="size-6" />
               </button>
@@ -60,11 +61,11 @@ export function Navbar() {
                 <SheetTitle>Navigation</SheetTitle>
               </SheetHeader>
               <div className="mb-4">
-                <p className="display text-lg font-bold text-[#5B0F0F]">
-                  Kunawa Space
+                <p className="display text-lg font-bold text-[#0038FF]">
+                  Belum Pulang
                 </p>
                 <p className="text-xs text-brown/70">
-                  Coffee, food, and good vibes
+                  Coffee, stories, and good vibes
                 </p>
               </div>
               <nav className="flex flex-col gap-2">
@@ -86,21 +87,37 @@ export function Navbar() {
         </div>
 
         <Link href="/" className="leading-tight">
-          <p className="display text-base sm:text-xl lg:text-2xl font-extrabold uppercase text-[#5B0F0F] tracking-tight">
-            Kunawa Space
+          <p
+            className={cn(
+              "display text-base sm:text-xl lg:text-2xl font-extrabold uppercase tracking-tight",
+              isHome
+                ? "text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+                : "text-[#0038FF]"
+            )}
+          >
+            Belum Pulang
           </p>
         </Link>
 
-        <nav className="hidden items-center gap-2 text-base font-bold uppercase text-brown md:flex">
+        <nav
+          className={cn(
+            "hidden items-center gap-2 text-base font-bold uppercase md:flex",
+            isHome ? "text-white" : "text-brown"
+          )}
+        >
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
                 "rounded-full px-4 py-2 transition",
-                pathname === link.href
-                  ? "bg-amber-100 text-brown shadow-chip"
-                  : "hover:bg-amber-50 hover:text-brown"
+                isHome
+                  ? pathname === link.href
+                    ? "bg-white/20 text-white backdrop-blur"
+                    : "hover:bg-white/15 hover:text-white"
+                  : pathname === link.href
+                    ? "bg-amber-100 text-brown shadow-chip"
+                    : "hover:bg-amber-50 hover:text-brown"
               )}
             >
               {link.label}
@@ -108,21 +125,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden sm:block">
-            <CartDrawer />
-          </div>
-          <Button
-            size="sm"
-            className="relative overflow-hidden rounded-full border lg:border-2 bg-yellow px-4 py-2 text-amber-50 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg sm:px-5 sm:py-3 cursor-pointer"
-            onClick={() => router.push("/menu")}
-          >
-            <span className="display text-sm sm:text-base font-extrabold uppercase tracking-wide">
-              Order Now
-            </span>
-            <span className="pointer-events-none absolute inset-0 rounded-full border border-brown/70 opacity-80" />
-          </Button>
-        </div>
+        <div aria-hidden className="h-10 w-10 md:w-2" />
 
       </div>
     </header>

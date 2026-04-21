@@ -265,7 +265,7 @@ export function VisitSection() {
         <div className="space-y-3">
           <p className="display text-2xl font-extrabold text-brown">Visit us</p>
           <p className="text-brown/80">
-            Kunawa Space, RCJQ+JC4, Jl. Mapala Raya, Tidung, Kec. Rappocini, Kota
+            Belum Pulang, RCJQ+JC4, Jl. Mapala Raya, Tidung, Kec. Rappocini, Kota
             Makassar, Sulawesi Selatan
           </p>
           <p className="text-brown/70">Rating Google: 4.7</p>
@@ -281,8 +281,8 @@ export function VisitSection() {
                 <a
                   key={social.name}
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={social.name}
                   className="flex items-center justify-center rounded-full bg-amber-100 p-2 text-brown shadow-chip"
                 >
@@ -302,7 +302,7 @@ export function VisitSection() {
         </div>
         <div className="h-52 overflow-hidden rounded-2xl">
           <iframe
-            title="Kunawa Space location"
+            title="Belum Pulang location"
             src="https://www.google.com/maps?q=-5.1684875,119.4385803&z=17&output=embed"
             className="h-full w-full border-0"
             allowFullScreen
@@ -363,12 +363,12 @@ const socialLinks: {
   {
     name: "Instagram",
     icon: "instagram",
-    href: "https://www.instagram.com/kunawa____/",
+    href: "https://www.instagram.com/belumpulang.co/",
   },
   {
     name: "TikTok",
     icon: "tiktok",
-    href: "https://www.tiktok.com/@kunawaspace_",
+    href: "/segera-hadir",
   },
-  { name: "YouTube", icon: "youtube" },
+  { name: "YouTube", icon: "youtube", href: "/segera-hadir" },
 ];

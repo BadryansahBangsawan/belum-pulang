@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import HeroCarousel from "@/components/hero-carousel";
 import {
   // ReservePromo,
   VisitSection,
@@ -9,15 +8,14 @@ import {
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { LoaderOverlay } from "@/components/loader-overlay";
-import { TopBanner } from "@/components/top-banner";
 import MyStory from "@/components/MyStory";
-import ProductsDaily from "@/components/ProductsDaily";
 import LogoBanner from "@/components/LogoBanner";
 import CafeGallery from "@/components/CafeGallery";
 import ChefSection from "@/components/ChefSection";
 import { InstaBanner } from "@/components/insta-banner";
 import InstagramWidget from "@/components/InstagramWidget";
 import GoogleReviews from "@/components/GoogleReviews";
+import FloatingFoodHeroDemo from "@/components/ui/demo";
 
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
@@ -30,11 +28,9 @@ export default function Home() {
   return (
     <div className="bg-cream">
       {showLoader ? <LoaderOverlay /> : null}
-      <TopBanner />
       <Navbar />
       <main className="pb-0">
-        <HeroCarousel />
-        <ProductsDaily />
+        <FloatingFoodHeroDemo />
         <LogoBanner />
         {/* <ReservePromo /> */}
         <MyStory />

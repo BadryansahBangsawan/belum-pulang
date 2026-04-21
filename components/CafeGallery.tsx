@@ -14,19 +14,14 @@ export default function CafeGallery() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
   const images: GalleryImage[] = [
-    { id: 1, src: "/kunawa_files/place/2.jpg", alt: "Area duduk Kunawa Space", category: "place" },
-    { id: 2, src: "/kunawa_files/place/3.jpg", alt: "Suasana interior Kunawa Space", category: "place" },
-    { id: 3, src: "/kunawa_files/place/4.jpg", alt: "Momen hangout di Kunawa Space", category: "place" },
-    { id: 4, src: "/kunawa_files/place/5.jpg", alt: "Spot favorit di dalam cafe", category: "place" },
-    { id: 5, src: "/kunawa_files/place/6.jpg", alt: "Nuansa nyaman Kunawa Space", category: "place" },
-    { id: 6, src: "/kunawa_files/place/7.jpg", alt: "Area ramai pengunjung Kunawa Space", category: "place" },
-    { id: 7, src: "/kunawa_files/place/8.jpg", alt: "Detail sudut interior cafe", category: "place" },
-    { id: 8, src: "/kunawa_files/place/9.jpg", alt: "Depan Kunawa Space", category: "place" },
-    { id: 9, src: "/kunawa_files/minuman/minum_1.jpg", alt: "Minuman signature Kunawa", category: "minuman" },
-    { id: 10, src: "/kunawa_files/minuman/minum_2.jpg", alt: "Menu minuman segar", category: "minuman" },
-    { id: 11, src: "/kunawa_files/minuman/minum_3.jpg", alt: "Pilihan minuman favorit", category: "minuman" },
-    { id: 12, src: "/kunawa_files/minuman/minum_4.jpg", alt: "Minuman dingin Kunawa", category: "minuman" },
-    { id: 13, src: "/kunawa_files/minuman/minum_5.jpg", alt: "Koleksi minuman Kunawa Space", category: "minuman" },
+    { id: 1, src: "/instagram1.jpg", alt: "Suasana Belum Pulang 1", category: "place" },
+    { id: 2, src: "/instagram2.jpg", alt: "Suasana Belum Pulang 2", category: "place" },
+    { id: 3, src: "/instagram3.jpg", alt: "Suasana Belum Pulang 3", category: "place" },
+    { id: 4, src: "/instagram4.jpg", alt: "Suasana Belum Pulang 4", category: "place" },
+    { id: 5, src: "/instagram1.jpg", alt: "Menu Belum Pulang 1", category: "minuman" },
+    { id: 6, src: "/instagram2.jpg", alt: "Menu Belum Pulang 2", category: "minuman" },
+    { id: 7, src: "/instagram3.jpg", alt: "Menu Belum Pulang 3", category: "minuman" },
+    { id: 8, src: "/instagram4.jpg", alt: "Menu Belum Pulang 4", category: "minuman" },
   ];
 
   const categories = [
@@ -105,7 +100,7 @@ export default function CafeGallery() {
       {/* CTA Button */}
       <div className="text-center mt-12 lg:mt-20">
         <a
-          href="https://www.instagram.com/kunawa____/"
+          href="https://www.instagram.com/belumpulang.co/"
           target="_blank"
           rel="noopener noreferrer"
           className="group relative inline-flex overflow-hidden rounded-full border-2 border-brown/70 bg-yellow-400 px-8 py-4 text-amber-50 shadow-lg transition hover:-translate-y-1 hover:shadow-xl"

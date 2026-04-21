@@ -264,10 +264,10 @@ export default function HeroCarousel() {
               transition
               hover:-translate-y-0.5 hover:shadow-lg
             "
-            onClick={() => router.push("/menu?category=burger")}
+            onClick={() => router.push("/segera-hadir")}
           >
             <span className="display text-lg sm:text-xl font-extrabold uppercase tracking-wide text-white">
-              Order Now
+              Segera Hadir
             </span>
             <ChevronRight
               strokeWidth={3}
@@ -288,9 +288,9 @@ export default function HeroCarousel() {
               cursor-pointer
               hover:underline underline-offset-4
             "
-            onClick={() => router.push("/menu")}
+            onClick={() => router.push("/segera-hadir")}
           >
-            Learn More
+            Social Media
             <ChevronRight />
           </Button>
         </div>

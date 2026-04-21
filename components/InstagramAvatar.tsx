@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { instagramProfile } from "@/lib/instagram";
 
 export default function InstagramAvatar() {
   return (
@@ -9,8 +10,8 @@ export default function InstagramAvatar() {
         <div className="bg-white p-[3px] rounded-full">
           {/* Avatar */}
           <Image
-            src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=200&h=200&fit=crop"
-            alt="Bakehouse Cafe"
+            src={instagramProfile.avatar}
+            alt={`${instagramProfile.name} logo`}
             width={80}
             height={80}
             className="rounded-full object-cover"
