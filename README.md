@@ -44,3 +44,13 @@ Other scripts:
 - Fonts: Baloo 2 (display) and Inter (body) are loaded via `next/font`.
 - Images use Unsplash placeholders; swap with branded assets as needed.
 - Tailwind theme tokens live in `app/globals.css` for quick palette tweaks.
+
+## Deployment
+
+Deploy to [Vercel](https://vercel.com) in one click — import the repo, set the root directory to `.`, and Vercel detects Next.js automatically.
+
+For self-hosted deployments:
+```bash
+npm run build   # builds .next/
+npm start       # serves on port 3000 (set PORT env var to override)
+```
