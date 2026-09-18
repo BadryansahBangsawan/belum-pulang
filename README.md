@@ -40,6 +40,8 @@ Other scripts:
   - `app/reserve/page.tsx` (`OWNER_NUMBER`)
 - Menu items and categories live in `lib/menu-data.ts`.
 
+Use a Node.js LTS release (20+) for local `npm install` / `npm run build`. Cart and reservation flows open WhatsApp via `wa.me/<OWNER_NUMBER>` deep links — keep the number in international format without `+` or spaces so mobile clients open the chat reliably.
+
 ## Notes
 - Fonts: Baloo 2 (display) and Inter (body) are loaded via `next/font`.
 - Images use Unsplash placeholders; swap with branded assets as needed.
